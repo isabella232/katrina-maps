@@ -1,0 +1,17 @@
+GDAL==1.6.0
+Mako==1.0.1
+MarkupSafe==0.23
+PyYAML==3.11
+SQLAlchemy==1.0.6
+Unidecode==0.04.18
+alembic==0.7.6
+dataset==0.6.0
+englewood==0.0.13
+gnureadline==6.3.3
+ipdb==0.8.1
+ipython==3.2.1
+normality==0.2.2
+psycopg2==2.6.1
+python-slugify==1.1.3
+six==1.9.0
+wsgiref==0.1.2
