@@ -22,7 +22,6 @@ def import_data(db, product, filename):
         rows = list(csv.reader(f))
 
     raw_columns = rows.pop(0)
-    rows.pop(0)
 
     columns = [slugify(column, separator='_') for column in raw_columns]
     #for column in raw_columns:

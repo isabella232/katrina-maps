@@ -10,13 +10,12 @@ census_table = db['census_data']
 
 
 def get_2000_data(feature):
-    result = census_table.find_one(geo_id=feature.geo_id)
-    print result
+    result = census_table.find_one(geo_id2=feature.ctidfp00, product='decennial-2000')
     return {
-        'white': 500,
-        'black': 500,
-        'asian': 500,
-        'hispanic': 500,
+        'white': int(result['vd03']),
+        'black': int(result['vd04']),
+        'asian': int(result['vd06']),
+        'hispanic': int(result['vd10']),
     }
 
 
