@@ -6,8 +6,8 @@ from slugify import slugify
 from collections import OrderedDict
 
 INPUT_FILES = (
-    #('acs-2013', 'data/acs2013_5yr_B02001_14000US22071014400/acs2013_5yr_B02001_14000US22071014400.csv'),
-    ('decennial-2010', 'data/decennial/DEC_10_SF1_P5_with_ann.csv'),
+    ('decennial-2000', 'data/decennial-2000/DEC_00_SF1_P008_with_ann.csv'),
+    ('decennial-2010', 'data/decennial-2010/DEC_10_SF1_P5_with_ann.csv'),
 )
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
