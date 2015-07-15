@@ -8,6 +8,7 @@ from collections import OrderedDict
 INPUT_FILES = (
     ('decennial-2000', 'data/decennial-2000/DEC_00_SF1_P008_with_ann.csv'),
     ('decennial-2010', 'data/decennial-2010/DEC_10_SF1_P5_with_ann.csv'),
+    ('acs-2013', 'data/acs-2013/ACS_13_5YR_B03002_with_ann.csv'),
 )
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
