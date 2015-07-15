@@ -5,6 +5,8 @@ psql nola_demographics -c "CREATE EXTENSION postgis;"
 psql nola_demographics -c "CREATE EXTENSION postgis_topology"
 psql nola_demographics -c "SELECT postgis_full_version()"
 
+rm -Rf ./output/*
+
 echo "Import census data"
 ./import.py
 
