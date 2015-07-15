@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 
 import dataset
+import os
 
 from englewood import DotDensityPlotter
+from functools import partial
 
 DOT_DIVISOR = 25
 
@@ -22,12 +24,13 @@ def get_2000_data(feature):
 
 
 def make_2000_dots():
+    print 'making 2000 decennial dots'
     args = [
         'PG:dbname=nola_demographics host=localhost',
         'census_geography_2000',
         'ESRI Shapefile',
-        'output/dots-2000',
-        'dots-2000',
+        'output/dots-decennial-2000',
+        'dots-decennial-2000',
         get_2000_data,
         DOT_DIVISOR
     ]
@@ -46,12 +49,13 @@ def get_2010_data(feature):
 
 
 def make_2010_dots():
+    print 'making 2010 decennial dots'
     args = [
         'PG:dbname=nola_demographics host=localhost',
         'census_geography_2010',
         'ESRI Shapefile',
-        'output/dots-2010',
-        'dots-2010',
+        'output/dots-decennial-2010',
+        'dots-decennial-2010',
         get_2010_data,
         DOT_DIVISOR
     ]
@@ -59,24 +63,33 @@ def make_2010_dots():
     dots.plot()
 
 
-def get_2013_data(feature):
-    result = census_table.find_one(geo_id=feature.geo_id, product='acs-2013')
-    return {
-        'white': int(result['hd01_vd03']),
-        'black': int(result['hd01_vd04']),
-        'asian': int(result['hd01_vd06']),
-        'hispanic': int(result['hd01_vd12']),
-    }
+def get_acs_data(feature, product):
+    result = census_table.find_one(geo_id=feature.geo_id, product=product)
+    if result:
+        return {
+            'white': int(result['hd01_vd03']),
+            'black': int(result['hd01_vd04']),
+            'asian': int(result['hd01_vd06']),
+            'hispanic': int(result['hd01_vd12']),
+        }
+    else:
+        print 'warning: no data for %s %s' % (feature.geo_id, product)
 
+def make_acs_dots(year):
+    print 'making %s acs dots' % year
+    output_dir = 'output/dots-acs-%s' % year
+    try:
+        os.makedirs(output_dir)
+    except OSError:
+        pass
 
-def make_2013_dots():
     args = [
         'PG:dbname=nola_demographics host=localhost',
         'census_geography_2010',
         'ESRI Shapefile',
-        'output/dots-2013',
-        'dots-2013',
-        get_2013_data,
+        output_dir,
+        'dots-acs-%s' % year,
+        partial(get_acs_data, product='acs-%s' % year),
         DOT_DIVISOR
     ]
     dots = DotDensityPlotter(*args)
@@ -87,4 +100,5 @@ def make_2013_dots():
 if __name__ == '__main__':
     make_2000_dots()
     make_2010_dots()
-    make_2013_dots()
+    for year in range(2009, 2014):
+        make_acs_dots(year)
