@@ -16,5 +16,8 @@ PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/t
 echo "Import 2010 census tracts"
 PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/gz_2010_22_140_00_500k/gz_2010_22_140_00_500k.shp  -t_srs EPSG:4269 -nlt multipolygon -nln census_geography_2010
 
+echo "Generate summary files"
+./summarize.py
+
 echo "Make some dots"
 ./dots.py
