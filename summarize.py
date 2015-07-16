@@ -26,6 +26,7 @@ def summarize_2000():
     result = db.query("""
         select
             f.county_name,
+            sum(c.vd01::integer) as total,
             sum(c.vd03::integer) as white,
             sum(c.vd04::integer) as black,
             sum(c.vd06::integer) as asian,
@@ -49,6 +50,7 @@ def summarize_2010():
     result = db.query("""
         select
             f.county_name,
+            sum(c.d001::integer) as total,
             sum(c.d003::integer) as white,
             sum(c.d004::integer) as black,
             sum(c.d006::integer) as asian,
@@ -73,6 +75,7 @@ def summarize_acs(year):
     result = db.query("""
         select
             f.county_name,
+            sum(c.hd01_vd01::integer) as total,
             sum(c.hd01_vd03::integer) as white,
             sum(c.hd01_vd04::integer) as black,
             sum(c.hd01_vd06::integer) as asian,
