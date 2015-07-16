@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import dataset
+import os
 
 METRO_PARISHES = [
     'Jefferson Parish',
@@ -15,10 +16,36 @@ METRO_PARISHES = [
 POSTGRES_URL = 'postgresql:///nola_demographics'
 db = dataset.connect(POSTGRES_URL)
 
-def summarize_2010():
-    parish_list = ["'{0}'".format(parish) for parish in METRO_PARISHES]
-    parishes = ', '.join(parish_list)
 
+def get_parishes():
+    parish_list = ["'{0}'".format(parish) for parish in METRO_PARISHES]
+    return ', '.join(parish_list)
+
+
+def summarize_2000():
+    result = db.query("""
+        select
+            f.county_name,
+            sum(c.vd03::integer) as white,
+            sum(c.vd04::integer) as black,
+            sum(c.vd06::integer) as asian,
+            sum(c.vd10::integer) as hispanic
+        from census_data c
+        join census_geography_2000 g on
+            c.geo_id2 = g.ctidfp00
+        join fips f on
+            g.countyfp00 = f.county_fp
+        where
+            c.product='decennial-2000' and
+            f.county_name in ({0})
+        group by
+            f.county_name
+    """.format(get_parishes()))
+
+    dataset.freeze(result, format='csv', filename='output/population-summary/decennial-population-2000.csv')
+
+
+def summarize_2010():
     result = db.query("""
         select
             f.county_name,
@@ -37,10 +64,46 @@ def summarize_2010():
 
         group by
             f.county_name
-    """.format(parishes))
+    """.format(get_parishes()))
 
-    dataset.freeze(result, format='csv', filename='output/population-2010.csv')
+    dataset.freeze(result, format='csv', filename='output/population-summary/decennial-population-2010.csv')
+
+
+def summarize_acs(year):
+    result = db.query("""
+        select
+            f.county_name,
+            sum(c.hd01_vd03::integer) as white,
+            sum(c.hd01_vd04::integer) as black,
+            sum(c.hd01_vd06::integer) as asian,
+            sum(c.hd01_vd12::integer) as hispanic
+        from census_data c
+        join census_geography_2010 g on
+            c.geo_id = g.geo_id
+        join fips f on
+            g.county = f.county_fp
+        where
+            c.product='acs-{0}' and
+            f.county_name in ({1})
+        group by
+            f.county_name
+    """.format(year, get_parishes()))
+
+    dataset.freeze(result, format='csv', filename='output/population-summary/acs-population-{0}.csv'.format(year))
+
 
 if __name__ == '__main__':
-    print 'summarizing 2010'
+    try:
+        os.makedirs('output/population-summary/')
+    except OSError:
+        pass
+
+    print 'summarizing decennial 2000'
+    summarize_2000()
+
+    print 'summarizing decennial 2010'
     summarize_2010()
+
+    for year in range(2009, 2014):
+        print 'summarizing acs {0}'.format(year)
+        summarize_acs(year)
