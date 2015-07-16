@@ -14,6 +14,7 @@ INPUT_FILES = (
     ('acs-2010', 'data/acs-2010/ACS_10_5YR_B03002_with_ann.csv'),
     ('acs-2009', 'data/acs-2009/ACS_09_5YR_B03002_with_ann.csv'),
 )
+FIPS_CROSSWALK_FILE = 'data/fips-crosswalk/st22_la_cou.txt'
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
 db = dataset.connect(POSTGRES_URL)
@@ -47,7 +48,26 @@ def import_data(db, product, filename):
     table.insert_many(data)
 
 
+def import_fips():
+    table = db['fips']
+
+    with open(FIPS_CROSSWALK_FILE) as f:
+        rows = list(csv.reader(f))
+
+    columns = ['state', 'state_fp', 'county_fp', 'county_name', 'class_fp']
+
+    data = []
+    for row in rows:
+        processed_row = OrderedDict(zip(columns, row))
+        data.append(processed_row)
+
+    table.insert_many(data)
+
+
 if __name__ == '__main__':
+    print 'import fips crosswalk'
+    import_fips()
+
     for product, filename in INPUT_FILES:
         print 'processing %s' % product
         import_data(db, product, filename)
