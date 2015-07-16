@@ -30,12 +30,6 @@ def import_data(db, product, filename):
     raw_columns = rows.pop(0)
 
     columns = [slugify(column, separator='_') for column in raw_columns]
-    #for column in raw_columns:
-        #processed_name = .replace('some_other_race', 'other')
-        #name_parts = processed_name.split('_')
-        #if len(name_parts) > 1:
-            #processed_name = '_'.join(name_parts[1:])
-        #columns.append(processed_name)
 
     table = db['census_data']
 
