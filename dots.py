@@ -6,7 +6,7 @@ import os
 from englewood import DotDensityPlotter
 from functools import partial
 
-DOT_DIVISOR = 25
+DOT_DIVISOR = 5
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
 db = dataset.connect(POSTGRES_URL)
