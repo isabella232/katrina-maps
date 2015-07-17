@@ -28,9 +28,13 @@ def summarize_2000():
             f.county_name,
             sum(c.vd01::integer) as total,
             sum(c.vd03::integer) as white,
+            100 * (sum(c.vd03::float)/sum(c.vd01::float)) as white_percent,
             sum(c.vd04::integer) as black,
+            100 * (sum(c.vd04::float)/sum(c.vd01::float)) as black_percent,
             sum(c.vd06::integer) as asian,
-            sum(c.vd10::integer) as hispanic
+            100 * (sum(c.vd06::float)/sum(c.vd01::float)) as asian_percent,
+            sum(c.vd10::integer) as hispanic,
+            100 * (sum(c.vd10::float)/sum(c.vd01::float)) as hispanic_percent
         from census_data c
         join census_geography_2000 g on
             c.geo_id2 = g.ctidfp00
@@ -52,9 +56,13 @@ def summarize_2010():
             f.county_name,
             sum(c.d001::integer) as total,
             sum(c.d003::integer) as white,
+            100 * (sum(c.d003::float)/sum(c.d001::float)) as white_percent,
             sum(c.d004::integer) as black,
+            100 * (sum(c.d004::float)/sum(c.d001::float)) as black_percent,
             sum(c.d006::integer) as asian,
-            sum(c.d010::integer) as hispanic
+            100 * (sum(c.d006::float)/sum(c.d001::float)) as asian_percent,
+            sum(c.d010::integer) as hispanic,
+            100 * (sum(c.d010::float)/sum(c.d001::float)) as hispanic_percent
         from census_data c
         join census_geography_2010 g on
             c.geo_id = g.geo_id
@@ -77,9 +85,13 @@ def summarize_acs(year):
             f.county_name,
             sum(c.hd01_vd01::integer) as total,
             sum(c.hd01_vd03::integer) as white,
+            100 * (sum(c.hd01_vd03::float)/sum(c.hd01_vd01::float)) as white_percent,
             sum(c.hd01_vd04::integer) as black,
+            100 * (sum(c.hd01_vd04::float)/sum(c.hd01_vd01::float)) as black_percent,
             sum(c.hd01_vd06::integer) as asian,
-            sum(c.hd01_vd12::integer) as hispanic
+            100 * (sum(c.hd01_vd06::float)/sum(c.hd01_vd01::float)) as asian_percent,
+            sum(c.hd01_vd12::integer) as hispanic,
+            100 * (sum(c.hd01_vd12::float)/sum(c.hd01_vd01::float)) as hispanic_percent
         from census_data c
         join census_geography_2010 g on
             c.geo_id = g.geo_id
