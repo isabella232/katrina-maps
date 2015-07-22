@@ -9,11 +9,11 @@ from summarize import METRO_PARISHES
 INPUT_FILES = (
     ('decennial-2000', 'data/decennial-2000/DEC_00_SF1_P008_with_ann.csv'),
     ('decennial-2010', 'data/decennial-2010/DEC_10_SF1_P5_with_ann.csv'),
-    ('acs-2013', 'data/acs-2013/ACS_13_5YR_B03002_with_ann.csv'),
-    ('acs-2012', 'data/acs-2012/ACS_12_5YR_B03002_with_ann.csv'),
-    ('acs-2011', 'data/acs-2011/ACS_11_5YR_B03002_with_ann.csv'),
-    ('acs-2010', 'data/acs-2010/ACS_10_5YR_B03002_with_ann.csv'),
-    ('acs-2009', 'data/acs-2009/ACS_09_5YR_B03002_with_ann.csv'),
+    #('acs-2013', 'data/acs-2013/ACS_13_5YR_B03002_with_ann.csv'),
+    #('acs-2012', 'data/acs-2012/ACS_12_5YR_B03002_with_ann.csv'),
+    #('acs-2011', 'data/acs-2011/ACS_11_5YR_B03002_with_ann.csv'),
+    #('acs-2010', 'data/acs-2010/ACS_10_5YR_B03002_with_ann.csv'),
+    #('acs-2009', 'data/acs-2009/ACS_09_5YR_B03002_with_ann.csv'),
 )
 FIPS_CROSSWALK_FILE = 'data/fips-crosswalk/st22_la_cou.txt'
 ESTIMATES_2000_FILE = 'data/populations-estimates/CO-EST00INT-SEXRACEHISP.csv.txt'
@@ -110,11 +110,11 @@ def import_2000_population_estimates():
 if __name__ == '__main__':
     import_2000_population_estimates()
 
-    #print 'import fips crosswalk'
-    #import_fips()
+    print 'import fips crosswalk'
+    import_fips()
 
-    #for product, filename in INPUT_FILES:
-        #print 'processing %s' % product
-        #import_data(db, product, filename)
+    for product, filename in INPUT_FILES:
+        print 'processing %s' % product
+        import_data(db, product, filename)
 
         

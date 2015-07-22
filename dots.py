@@ -100,5 +100,5 @@ def make_acs_dots(year):
 if __name__ == '__main__':
     make_2000_dots()
     make_2010_dots()
-    for year in range(2009, 2014):
-        make_acs_dots(year)
+    #for year in range(2009, 2014):
+        #make_acs_dots(year)
