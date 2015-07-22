@@ -119,6 +119,6 @@ if __name__ == '__main__':
     print 'summarizing decennial 2010'
     summarize_2010()
 
-    for year in range(2009, 2014):
-        print 'summarizing acs {0}'.format(year)
-        summarize_acs(year)
+    #for year in range(2009, 2014):
+        #print 'summarizing acs {0}'.format(year)
+        #summarize_acs(year)
