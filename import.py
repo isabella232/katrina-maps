@@ -4,6 +4,7 @@ import dataset
 import csv
 from slugify import slugify
 from collections import OrderedDict
+from summarize import METRO_PARISHES
 
 INPUT_FILES = (
     ('decennial-2000', 'data/decennial-2000/DEC_00_SF1_P008_with_ann.csv'),
@@ -15,6 +16,7 @@ INPUT_FILES = (
     ('acs-2009', 'data/acs-2009/ACS_09_5YR_B03002_with_ann.csv'),
 )
 FIPS_CROSSWALK_FILE = 'data/fips-crosswalk/st22_la_cou.txt'
+ESTIMATES_2000_FILE = 'data/populations-estimates/CO-EST00INT-SEXRACEHISP.csv.txt'
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
 db = dataset.connect(POSTGRES_URL)
@@ -57,11 +59,36 @@ def import_fips():
 
     table.insert_many(data)
 
+def import_2000_population_estimates():
+    table = db['population_estimates']
+
+    with open(ESTIMATES_2000_FILE) as f:
+        rows = list(csv.DictReader(f))
+
+    for row in rows:
+        if (row['STNAME'] == 'Louisiana' 
+                and row['CTYNAME'] in METRO_PARISHES 
+                and row['SEX'] == '0'):
+
+            if row['ORIGIN'] == '2' and row['RACE'] == '0':
+                print 'found hispanic row for %s' % row['CTYNAME']
+                print row['POPESTIMATE2010']   
+
+            if row['ORIGIN'] == '1' and row['RACE'] == '1':
+                print 'found white row for %s' % row['CTYNAME']
+                print row['POPESTIMATE2010']  
+                
+           
+
 
 if __name__ == '__main__':
-    print 'import fips crosswalk'
-    import_fips()
+    import_2000_population_estimates()
 
-    for product, filename in INPUT_FILES:
-        print 'processing %s' % product
-        import_data(db, product, filename)
+    #print 'import fips crosswalk'
+    #import_fips()
+
+    #for product, filename in INPUT_FILES:
+        #print 'processing %s' % product
+        #import_data(db, product, filename)
+
+        

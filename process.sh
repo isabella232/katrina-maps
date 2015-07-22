@@ -20,4 +20,4 @@ echo "Generate summary files"
 ./summarize.py
 
 echo "Make some dots"
-./dots.py
+#./dots.py
