@@ -106,6 +106,8 @@ def import_2000_population_estimates():
             if row['ORIGIN'] == '1' and row['RACE'] == '6':
                 _write_2000_population_estimate('two_or_more', row)
 
+            if row['ORIGIN'] == '0' and row['RACE'] == '0':
+                _write_2000_population_estimate('total', row)
 
 if __name__ == '__main__':
     import_2000_population_estimates()

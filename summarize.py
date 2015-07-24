@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from slugify import slugify
 
 import dataset
 import os
@@ -106,6 +107,36 @@ def summarize_acs(year):
 
     dataset.freeze(result, format='csv', filename='output/population-summary/acs-population-{0}.csv'.format(year))
 
+def summarize_population_estimates():
+
+    for county in METRO_PARISHES:
+        filename = 'output/population-summary/{0}.csv'.format(slugify(county))
+        result = db.query(""" 
+            select 
+                total,
+                white,
+                white::float/total::float as white_percent,
+                black,
+                black::float/total::float as black_percent,
+                hispanic,
+                hispanic::float/total::float as hispanic_percent,
+                asian,
+                asian::float/total::float as asian_percent,
+                american_indian,
+                american_indian::float/total::float as american_indian_percent,
+                native_hawaiian,
+                native_hawaiian::float/total::float as native_hawaiian_percent,
+                two_or_more,
+                two_or_more::float/total::float as two_or_more_percent
+            from
+                population_estimates
+            where
+                county='{0}' 
+
+        """.format(county))
+        dataset.freeze(result, format='csv', filename=filename)
+
+
 
 if __name__ == '__main__':
     try:
@@ -118,6 +149,9 @@ if __name__ == '__main__':
 
     print 'summarizing decennial 2010'
     summarize_2010()
+
+    print 'summarize_population_estimates'
+    summarize_population_estimates()
 
     #for year in range(2009, 2014):
         #print 'summarizing acs {0}'.format(year)
