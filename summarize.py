@@ -122,25 +122,21 @@ def summarize_population_estimates():
         filename = 'output/population-summary/{0}.csv'.format(slugify(county))
         result = db.query(""" 
             select 
+                year,
                 total,
                 white,
-                white::float/total::float as white_percent,
                 black,
-                black::float/total::float as black_percent,
                 hispanic,
-                hispanic::float/total::float as hispanic_percent,
                 asian,
-                asian::float/total::float as asian_percent,
                 american_indian,
-                american_indian::float/total::float as american_indian_percent,
                 native_hawaiian,
-                native_hawaiian::float/total::float as native_hawaiian_percent,
-                two_or_more,
-                two_or_more::float/total::float as two_or_more_percent
+                two_or_more
             from
                 population_estimates
             where
                 county='{0}' 
+            order by year
+            
 
         """.format(county))
         dataset.freeze(result, format='csv', filename=filename)
