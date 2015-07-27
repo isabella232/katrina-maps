@@ -7,13 +7,8 @@ from collections import OrderedDict
 from summarize import METRO_PARISHES
 
 INPUT_FILES = (
-    ('decennial-2000', 'data/decennial-2000/DEC_00_SF1_P008_with_ann.csv'),
-    ('decennial-2010', 'data/decennial-2010/DEC_10_SF1_P5_with_ann.csv'),
-    #('acs-2013', 'data/acs-2013/ACS_13_5YR_B03002_with_ann.csv'),
-    #('acs-2012', 'data/acs-2012/ACS_12_5YR_B03002_with_ann.csv'),
-    #('acs-2011', 'data/acs-2011/ACS_11_5YR_B03002_with_ann.csv'),
-    #('acs-2010', 'data/acs-2010/ACS_10_5YR_B03002_with_ann.csv'),
-    #('acs-2009', 'data/acs-2009/ACS_09_5YR_B03002_with_ann.csv'),
+    ('decennial-2000-bg', 'data/decennial-2000-bg/DEC_00_SF1_P004_with_ann.csv'),
+    ('acs-2013-bg', 'data/acs-2013-bg/ACS_13_5YR_B03002_with_ann.csv'),
 )
 FIPS_CROSSWALK_FILE = 'data/fips-crosswalk/st22_la_cou.txt'
 ESTIMATES_2000_FILE = 'data/populations-estimates/CO-EST00INT-SEXRACEHISP.csv.txt'

@@ -13,6 +13,15 @@ METRO_PARISHES = [
     'St. Charles Parish',
     'St. John the Baptist Parish',
 ]
+METRO_FIPS = [
+    '051',
+    '071',
+    '075',
+    '087',
+    '103',
+    '089',
+    '095',
+]
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
 db = dataset.connect(POSTGRES_URL)
@@ -144,11 +153,11 @@ if __name__ == '__main__':
     except OSError:
         pass
 
-    print 'summarizing decennial 2000'
-    summarize_2000()
+    #print 'summarizing decennial 2000'
+    #summarize_2000()
 
-    print 'summarizing decennial 2010'
-    summarize_2010()
+    #print 'summarizing decennial 2010'
+    #summarize_2010()
 
     print 'summarize_population_estimates'
     summarize_population_estimates()

@@ -10,14 +10,15 @@ rm -Rf ./output/*
 echo "Import census data"
 ./import.py
 
-echo "Import 2000 census tracts"
-PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/tl_2010_22_tract00/tl_2010_22_tract00.shp  -t_srs EPSG:4269 -nlt multipolygon -nln census_geography_2000
+echo "Import 2000 census block groups"
+PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/bg22_d00_shp/bg22_d00.shp -s_srs EPSG:4269  -t_srs EPSG:4269 -nlt multipolygon -nln block_groups_2000
 
-echo "Import 2010 census tracts"
-PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/gz_2010_22_140_00_500k/gz_2010_22_140_00_500k.shp  -t_srs EPSG:4269 -nlt multipolygon -nln census_geography_2010
+echo "Import 2013 census block groups"
+PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/cb_2013_22_bg_500k/cb_2013_22_bg_500k.shp  -t_srs EPSG:4269 -nlt multipolygon -nln block_groups_2013
+
 
 echo "Generate summary files"
 ./summarize.py
 
 echo "Make some dots"
-#./dots.py
+./dots.py

@@ -1,0 +1,76 @@
+GEO.id,Id
+GEO.id2,Id2
+GEO.display-label,Geography
+VD01,Total:
+VD02,Hispanic or Latino
+VD03,Not Hispanic or Latino:
+VD04,Not Hispanic or Latino: - Population of one race:
+VD05,Not Hispanic or Latino: - Population of one race: - White alone
+VD06,Not Hispanic or Latino: - Population of one race: - Black or African American alone
+VD07,Not Hispanic or Latino: - Population of one race: - American Indian and Alaska Native alone
+VD08,Not Hispanic or Latino: - Population of one race: - Asian alone
+VD09,Not Hispanic or Latino: - Population of one race: - Native Hawaiian and Other Pacific Islander alone
+VD10,Not Hispanic or Latino: - Population of one race: - Some other race alone
+VD11,Not Hispanic or Latino: - Population of two or more races:
+VD12,Not Hispanic or Latino: - Population of two or more races: - Population of two races:
+VD13,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - White; Black or African American
+VD14,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - White; American Indian and Alaska Native
+VD15,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - White; Asian
+VD16,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - White; Native Hawaiian and Other Pacific Islander
+VD17,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - White; Some other race
+VD18,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - Black or African American; American Indian and Alaska Native
+VD19,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - Black or African American; Asian
+VD20,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - Black or African American; Native Hawaiian and Other Pacific Islander
+VD21,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - Black or African American; Some other race
+VD22,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - American Indian and Alaska Native; Asian
+VD23,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+VD24,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - American Indian and Alaska Native; Some other race
+VD25,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - Asian; Native Hawaiian and Other Pacific Islander
+VD26,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - Asian; Some other race
+VD27,Not Hispanic or Latino: - Population of two or more races: - Population of two races: - Native Hawaiian and Other Pacific Islander; Some other race
+VD28,Not Hispanic or Latino: - Population of two or more races: - Population of three races:
+VD29,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; Black or African American; American Indian and Alaska Native
+VD30,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; Black or African American; Asian
+VD31,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; Black or African American; Native Hawaiian and Other Pacific Islander
+VD32,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; Black or African American; Some other race
+VD33,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; American Indian and Alaska Native; Asian
+VD34,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+VD35,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; American Indian and Alaska Native; Some other race
+VD36,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; Asian; Native Hawaiian and Other Pacific Islander
+VD37,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; Asian; Some other race
+VD38,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - White; Native Hawaiian and Other Pacific Islander; Some other race
+VD39,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - Black or African American; American Indian and Alaska Native; Asian
+VD40,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+VD41,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - Black or African American; American Indian and Alaska Native; Some other race
+VD42,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - Black or African American; Asian; Native Hawaiian and Other Pacific Islander
+VD43,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - Black or African American; Asian;Some other race
+VD44,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - Black or African American; Native Hawaiian and Other Pacific Islander; Some other race
+VD45,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+VD46,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - American Indian and Alaska Native; Asian; Some other race
+VD47,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some other race
+VD48,Not Hispanic or Latino: - Population of two or more races: - Population of three races: - Asian; Native Hawaiian and Other Pacific Islander; Some other race
+VD49,Not Hispanic or Latino: - Population of two or more races: - Population of four races:
+VD50,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; Black or African American; American Indian and Alaska Native; Asian
+VD51,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander
+VD52,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; Black or African American; American Indian and Alaska Native; Some other race
+VD53,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander
+VD54,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; Black or African American; Asian; Some other race
+VD55,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; Black or African American; Native Hawaiian and Other Pacific Islander; Some other race
+VD56,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+VD57,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; American Indian and Alaska Native; Asian; Some other race
+VD58,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some other race
+VD59,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - White; Asian; Native Hawaiian and Other Pacific Islander; Some other race
+VD60,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+VD61,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - Black or African American; American Indian and Alaska Native; Asian; Some other race
+VD62,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some other race
+VD63,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some other race
+VD64,Not Hispanic or Latino: - Population of two or more races: - Population of four races: - American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some other race
+VD65,Not Hispanic or Latino: - Population of two or more races: - Population of five races:
+VD66,Not Hispanic or Latino: - Population of two or more races: - Population of five races: - White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander
+VD67,Not Hispanic or Latino: - Population of two or more races: - Population of five races: - White; Black or African American; American Indian and Alaska Native; Asian; Some other race
+VD68,Not Hispanic or Latino: - Population of two or more races: - Population of five races: - White; Black or African American; American Indian and Alaska Native; Native Hawaiian and Other Pacific Islander; Some other race
+VD69,Not Hispanic or Latino: - Population of two or more races: - Population of five races: - White; Black or African American; Asian; Native Hawaiian and Other Pacific Islander; Some other race
+VD70,Not Hispanic or Latino: - Population of two or more races: - Population of five races: - White; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some other race
+VD71,Not Hispanic or Latino: - Population of two or more races: - Population of five races: - Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some other race
+VD72,Not Hispanic or Latino: - Population of two or more races: - Population of six races:
+VD73,Not Hispanic or Latino: - Population of two or more races: - Population of six races: - White; Black or African American; American Indian and Alaska Native; Asian; Native Hawaiian and Other Pacific Islander; Some other race
