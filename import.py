@@ -107,24 +107,49 @@ def import_2000_population_estimates():
                 _write_2000_population_estimate('total', row)
 
 def import_2010_population_estimates():
+    table = db['population_estimates']
+
     with open(ESTIMATES_2010_FILE) as f:
         rows = list(csv.DictReader(f))
 
-    for row in rows:    
-      
-        if row['GEO.id'][-3:] in METRO_FIPS and row['Sex.id'] == 'totsex':
-            print row
-                
+    for row in rows:
+        county_name, state = row['GEO.display-label'].split(', ')
+        est_type = row['Year.id'][:4]
+        est_year = row['Year.id'][4:]
+
+        data = {
+            'county': county_name,
+            'year': est_year,
+        }
+
+        if (county_name in METRO_PARISHES
+                and est_type == 'est7'
+                and est_year != '2010'
+                and row['Sex.id'] == 'totsex'):
+
+            if row['Hisp.id'] == 'hisp':
+                data['hispanic'] = row['totpop']
+
+            if row['Hisp.id'] == 'nhisp':
+                data['white'] = row['wa']
+                data['black'] = row['ba']
+                data['asian'] = row['aa']
+                data['american_indian'] = row['ia']
+                data['native_hawaiian'] = row['na']
+                data['two_or_more'] = row['tom']
+
+            if row['Hisp.id'] == 'tothisp':
+                data['total'] = row['totpop']
+
+            table.upsert(data, ['year', 'county'])
 
 if __name__ == '__main__':
-    #import_2000_population_estimates()
+    import_2000_population_estimates()
     import_2010_population_estimates()
 
-    #print 'import fips crosswalk'
-    #import_fips()
+    print 'import fips crosswalk'
+    import_fips()
 
-    #for product, filename in INPUT_FILES:
-        #print 'processing %s' % product
-        #import_data(db, product, filename)
-
-        
+    for product, filename in INPUT_FILES:
+        print 'processing %s' % product
+        import_data(db, product, filename)
