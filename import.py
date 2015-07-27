@@ -4,14 +4,16 @@ import dataset
 import csv
 from slugify import slugify
 from collections import OrderedDict
-from summarize import METRO_PARISHES
+from summarize import METRO_PARISHES, METRO_FIPS
 
 INPUT_FILES = (
     ('decennial-2000-bg', 'data/decennial-2000-bg/DEC_00_SF1_P004_with_ann.csv'),
     ('acs-2013-bg', 'data/acs-2013-bg/ACS_13_5YR_B03002_with_ann.csv'),
 )
 FIPS_CROSSWALK_FILE = 'data/fips-crosswalk/st22_la_cou.txt'
-ESTIMATES_2000_FILE = 'data/populations-estimates/CO-EST00INT-SEXRACEHISP.csv.txt'
+ESTIMATES_2000_FILE = 'data/populations-estimates/2000-2010/CO-EST00INT-SEXRACEHISP.csv.txt'
+ESTIMATES_2010_FILE = 'data/populations-estimates/PEP_2014_PEPSR6H/PEP_2014_PEPSR6H_with_ann.csv'
+
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
 db = dataset.connect(POSTGRES_URL)
@@ -104,14 +106,25 @@ def import_2000_population_estimates():
             if row['ORIGIN'] == '0' and row['RACE'] == '0':
                 _write_2000_population_estimate('total', row)
 
+def import_2010_population_estimates():
+    with open(ESTIMATES_2010_FILE) as f:
+        rows = list(csv.DictReader(f))
+
+    for row in rows:    
+      
+        if row['GEO.id'][-3:] in METRO_FIPS and row['Sex.id'] == 'totsex':
+            print row
+                
+
 if __name__ == '__main__':
-    import_2000_population_estimates()
+    #import_2000_population_estimates()
+    import_2010_population_estimates()
 
-    print 'import fips crosswalk'
-    import_fips()
+    #print 'import fips crosswalk'
+    #import_fips()
 
-    for product, filename in INPUT_FILES:
-        print 'processing %s' % product
-        import_data(db, product, filename)
+    #for product, filename in INPUT_FILES:
+        #print 'processing %s' % product
+        #import_data(db, product, filename)
 
         
