@@ -15,17 +15,25 @@ census_table = db['census_data']
 
 
 def get_2000_data(feature):
-    #if feature.county in METRO_FIPS:
-    if True:
-        geoid = '{0}{1}{2}{3}'.format(feature.state, feature.county, feature.tract, feature.blkgroup)
+    if feature.county in METRO_FIPS:
+        geoid_root = '{0}{1}{2}'.format(feature.state, feature.county, feature.tract)
+
+        zero_pad = 12 - len(geoid_root)
+        if zero_pad == 1:
+            geoid = '{0}{1}'.format(geoid_root, feature.blkgroup)
+        if zero_pad == 2:
+            geoid = '{0}{1:02d}'.format(geoid_root, int(feature.blkgroup))
+        if zero_pad == 3:
+            geoid = '{0}{1:03d}'.format(geoid_root, int(feature.blkgroup))
+
         result = census_table.find_one(geo_id2=geoid, product='decennial-2000-bg')
+
         if result:
-            print 'result for %s' % geoid
             return {
-                'white': int(result['vd03']),
-                'black': int(result['vd04']),
-                'asian': int(result['vd06']),
-                'hispanic': int(result['vd10']),
+                'white': int(result['vd05']),
+                'black': int(result['vd06']),
+                'asian': int(result['vd08']),
+                'hispanic': int(result['vd02']),
             }
         else:
             print 'no result for %s' % geoid
