@@ -1,0 +1,373 @@
+<!DOCTYPE METADATA PUBLIC "-//FGDC//DTD METADATA 2.0//EN">
+<metadata>
+<idinfo>
+<citation>
+<citeinfo>
+<origin>Louisiana Department of Transportation and Development</origin>
+<pubdate>February 5, 2007</pubdate>
+<title>Louisiana Parish Boundaries, Geographic NAD83, LDOTD (2007) [Parishes_LDOTD_2007]</title>
+<geoform>vector digital data</geoform>
+<onlink>http://lagic.lsu.edu/data/losco/Parishes_LDOTD_2007.zip</onlink>
+</citeinfo>
+</citation>
+<descript>
+<abstract>
+Louisiana Parish Boundaries approved by Resolution of the GIS Council on January 19, 2000.
+This is a region dataset depicting the polygon boundaries of the 64 parishes comprising the state of Louisiana.  Parish boundaries extend 3 miles out into the Gulf of Mexico from the coastline.  This dataset was derived from many data sources and conveys the best currently (2005) available representation of the parishes of Louisiana and as a consequence, the best currently available representation of the territorial bounds of the state.
+</abstract>
+<purpose>Provide a GIS Layer containing the best existing line work available representing the parish boundaries portraying nominal attributes for each parish.</purpose>
+<supplinf>
+Revisions:
+(1)   Extensions of Parish Boundaries in Lake Maurepas and Lake Pontchartrain in accordance with Legislative Acts 740           of 1979, Regular Session and 229 of 1980, Regular Session that made some correction to Act 740 were                          completed October, 2001.
+(2)  Took the source data for the parishes and projected them into the LADOMAIN projection in UTM NAD 1983 in February, 2007.
+</supplinf>
+</descript>
+<timeperd>
+<timeinfo>
+<sngdate>
+<caldate>February 5, 2007</caldate>
+</sngdate>
+</timeinfo>
+<current>publication date</current>
+</timeperd>
+<status>
+<progress>Complete</progress>
+<update>As needed</update>
+</status>
+<spdom>
+<bounding>
+<westbc>-94.043186</westbc>
+<eastbc>-88.758344</eastbc>
+<northbc>33.019555</northbc>
+<southbc>28.854233</southbc>
+</bounding>
+</spdom>
+<keywords>
+<theme>
+<themekt>None</themekt>
+<themekey>Parishes</themekey>
+<themekey>Governmental Units</themekey>
+</theme>
+<place>
+<placekt>None</placekt>
+<placekey>Louisiana</placekey>
+</place>
+</keywords>
+<accconst>None</accconst>
+<useconst>
+These unaltered data may not be redistributed without all of the elements of the metadata listed in the Supplemental_Information section of this metadata document.  It is recommended that third parties wishing to use these data obtain them from the Distributor listed in this metadata document.
+
+If these data are altered or incorporated into another dataset, they are not to be redistributed without also: altering the name of the dataset, including a Content Standards for Digital Geospatial Metadata (FGDC-STD-001-1998) compliant metadata file that describes the dataset and reflects the alteration steps that makes the new dataset different from this one, and citing this dataset in the  metadata as a source for the altered dataset using the source citation specified below.
+
+If these digital data are used in the production of a report or in the compilation of a standalone printed map, then this dataset is to be cited in the report or on the map using the source citation specified below.
+
+The following source citation is to be used when citing this dataset: Louisiana Department of Transportation &apos;Parish Boundaries of Louisiana, Geographic NAD83,(2005) [parishes]&apos;
+
+Users hereby agree to abide by the use and reproduction conditions specified above. By using the data described in these metadata, the user acknowledges that the terms and conditions of use have been read and that the user is bound by these criteria.
+</useconst>
+<ptcontac>
+<cntinfo>
+<cntperp>
+<cntper>Darryl Mack</cntper>
+<cntorg>Louisiana Department of Transportation and Development</cntorg>
+</cntperp>
+<cntpos>IT Geographic Project Supervisor</cntpos>
+<cntvoice>225-379-1283</cntvoice>
+<cntfax>225-379-1807</cntfax>
+<cntemail>DarrylMack@dotd.louisiana.gov</cntemail>
+</cntinfo>
+</ptcontac>
+<browse>
+<browsen>&lt;URL: Parishes_LDOTD_2007.gif&gt;</browsen>
+<browset>GIF</browset>
+</browse>
+<datacred>Louisiana Department of Transportation and Development provided the source data for production of this data set.</datacred>
+<native>Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 2; ESRI ArcCatalog 9.2.0.1324</native>
+<crossref>
+<citeinfo>
+<title>DOTD_Parishes</title>
+</citeinfo>
+</crossref>
+</idinfo>
+<dataqual>
+<logic>This feature class was developed using original linework that was manually digitized using USGS Quadrangle Maps along with legal parish boundary descriptions. Anomalies will be noted between these data compiled by LADOTD and boundaries that are depicted in other reference data sets (e.g. USGS DRGs).  The depiction of boundaries in this data set has been heavily researched and is believed to be a better representation of the actual boundary than USGS sources. After careful examination conducted by the Louisiana GIS Council, it was resolved to use these boundaries as the most accurate data available on January 19, 2000.</logic>
+<complete>All parishes are present.</complete>
+<posacc>
+<horizpa>
+<horizpar>The positional accuracy of these boundaries is estimated to be +/- 40 feet.</horizpar>
+</horizpa>
+</posacc>
+<lineage>
+<srcinfo>
+<srccite>
+<citeinfo>
+<origin>Louisiana Department of Transportation and Development</origin>
+<pubdate>August 31, 2005</pubdate>
+<title>Parish Boundaries of Louisiana from LADOTD source data, Geographic NAD83 (2005) [parishes]</title>
+<geoform>vector digital data</geoform>
+<onlink>\\H00001ms016\85common\85map\ArcBase\Parishes.mdb</onlink>
+</citeinfo>
+</srccite>
+<typesrc>computer file</typesrc>
+<srctime>
+<timeinfo>
+<sngdate>
+<caldate>2005</caldate>
+</sngdate>
+</timeinfo>
+<srccurr>approximate date source data were received</srccurr>
+</srctime>
+<srccitea>LADOTD Parishes</srccitea>
+<srccontr>interior parish boundaries and remaining state boundary not compiled from other sources</srccontr>
+</srcinfo>
+<procstep>
+<procdesc>
+Dataset copied. LADOTD PARISH data (64 files) were projected from polyconic to UTM zone 15, NAD27 coordinates to be compatible with reference data (DRGs).  All other digital vector data (LOSLSABINE, LOSLPEARL, STATE_FEDERAL) were projected to UTM zone 15, NAD27 coordinates using Intergraph MGE software.  The digital vector data in the common coordinate system were spliced together.  The legal description data (LOSLLAKES) was converted to a digital representation and spliced into the other composite data.  Line cleaning and processing was performed on the composite.
+
+The resultant .dgn file was converted to an Arc/Info coverage, topology was built, and the dataset projected to geographic coordinates NAD83.  The Arc/Info dataset was converted to a feature class and the attributes of each parish polygon populated using LADOTD data.
+
+The feature class was modified to portray changes made to the parish boundaries in accordance with Legislative action to clarify boundary alignments.
+</procdesc>
+<srcused>LADOTD</srcused>
+<procdate>2005</procdate>
+<srcprod>LADOTD</srcprod>
+<proccont>
+<cntinfo>
+<cntperp>
+<cntper>Hampton Peele</cntper>
+<cntorg>LSU Department of Geography and Anthropology</cntorg>
+</cntperp>
+<cntvoice>(225)388-3455</cntvoice>
+<cntemail>hampton@lsu.edu</cntemail>
+</cntinfo>
+</proccont>
+</procstep>
+</lineage>
+</dataqual>
+<spdoinfo>
+<direct>Vector</direct>
+<ptvctinf>
+<sdtsterm>
+<sdtstype>G-polygon</sdtstype>
+<ptvctcnt>64</ptvctcnt>
+</sdtsterm>
+</ptvctinf>
+</spdoinfo>
+<spref>
+<horizsys>
+<geograph>
+<latres>0.000000</latres>
+<longres>0.000000</longres>
+<geogunit>Decimal degrees</geogunit>
+</geograph>
+<geodetic>
+<horizdn>North American Datum of 1983</horizdn>
+<ellips>Geodetic Reference System 80</ellips>
+<semiaxis>6378137.000000</semiaxis>
+<denflat>298.257222</denflat>
+</geodetic>
+</horizsys>
+<vertdef>
+<altsys>
+<altres>0.001000</altres>
+<altenc>Explicit elevation coordinate included with horizontal coordinates</altenc>
+</altsys>
+</vertdef>
+</spref>
+<eainfo>
+<detailed>
+<enttyp>
+<enttypl>Parishes_LDOTD_2007</enttypl>
+<enttypd>attribute table for parish regions</enttypd>
+<enttypds>LADOTD</enttypds>
+</enttyp>
+<attr>
+<attrlabl>SHAPE_Leng</attrlabl>
+</attr>
+<attr>
+<attrlabl>FIPS</attrlabl>
+</attr>
+<attr>
+<attrlabl>SHAPE</attrlabl>
+<attrdef>Feature geometry.</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Coordinates defining the features.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>SHAPE_Area</attrlabl>
+<attrdef>Area of feature in internal units squared.</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Positive real numbers that are automatically generated.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>Shape_Area</attrlabl>
+<attrdef>Area of feature in internal units squared.</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Positive real numbers that are automatically generated.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>Parish_Num</attrlabl>
+</attr>
+<attr>
+<attrlabl>PARISH</attrlabl>
+</attr>
+<attr>
+<attrlabl>Shape</attrlabl>
+<attrdef>Feature geometry.</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Coordinates defining the features.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>PARISH_FIP</attrlabl>
+</attr>
+<attr>
+<attrlabl>FID</attrlabl>
+<attrdef>Internal feature number.</attrdef>
+<attrdefs>ESRI</attrdefs>
+<attrdomv>
+<udom>Sequential unique whole numbers that are automatically generated.</udom>
+</attrdomv>
+</attr>
+<attr>
+<attrlabl>Shape_Le_1</attrlabl>
+</attr>
+</detailed>
+</eainfo>
+<distinfo>
+<distrib>
+<cntinfo>
+<cntorgp>
+<cntorg>Louisiana Department of Transportation and Development</cntorg>
+<cntper>Darryl W. Mack</cntper>
+</cntorgp>
+<cntpos>Information Technology Geographic Project Supervisor</cntpos>
+<cntvoice>225-379-1283</cntvoice>
+<cntfax>225-379-1807</cntfax>
+<cntemail>darrylmack@dotd.louisiana.gov</cntemail>
+</cntinfo>
+</distrib>
+<resdesc>Downloadable Data</resdesc>
+<distliab>
+The data herein, including but not limited to geographic data, tabular data, analytical data, electronic data structures or files, are provided &quot;as is&quot; without warranty of any kind, either expressed or implied, or statutory, including, but not limited to, the implied warranties or merchantability and fitness for a particular purpose.  The entire risk as to the quality and performance of the data is assumed by the user.  No guarantee of accuracy is granted, nor is any responsibility for reliance thereon assumed.  In no event shall the Louisiana Department of Transportation and Development (LADOTD) be liable for direct, indirect, incidental, consequential or special damages of any kind, including, but not limited to, loss of anticipated profits or benefits arising out of use of or reliance on the data. The LADOTD does not accept liability for any damages or misrepresentation caused by inaccuracies in the data or as a result of changes to the data caused by system transfers or other transformations or conversions, nor is there responsibility assumed to maintain the data in any manner or form.
+
+These data have been developed from the best available sources.  Although efforts have been made to ensure that the data are accurate and reliable, errors and variable conditions originating from physical sources used to develop the data may be reflected in the data supplied. Users must be aware of these conditions and bear responsibility for the appropriate use of the information with respect to possible errors, scale, resolution, rectification, positional accuracy, development methodology, time period, environmental and climatic conditions and other circumstances specific to these data.  The user is responsible for understanding the accuracy limitations of the data provided herein.  The burden for determining fitness for use lies entirely with the user.  The user should refer to the accompanying metadata notes for a description of the data and data development procedures.
+
+Although these data have been processed successfully on computers at the LADOTD, no guarantee, expressed or implied, is made by LADOTD regarding the use of these data on any other system, nor does the act of distribution constitute or imply any such warranty.  Distribution of these data is intended for information purposes and should not be considered  authoritative for navigational, engineering, legal and other site-specific uses.
+</distliab>
+<stdorder>
+<digform>
+<digtinfo>
+<transize>2.303</transize>
+</digtinfo>
+<digtopt>
+<onlinopt>
+<computer>
+<networka>
+<networkr>http://lagic.lsu.edu/data/losco/Parishes_LDOTD_2007.zip</networkr>
+</networka>
+</computer>
+</onlinopt>
+</digtopt>
+</digform>
+<fees>None</fees>
+</stdorder>
+</distinfo>
+<distinfo>
+<distrib>
+<cntinfo>
+<cntorgp>
+<cntorg>Louisiana Oil Spill Coordinator&apos;s Office</cntorg>
+<cntper>David Gisclair</cntper>
+</cntorgp>
+<cntpos>Technical Assistance Program (TAP) Director</cntpos>
+<cntaddr>
+<addrtype>mailing address</addrtype>
+<address>Louisiana Oil Spill Coordinator&apos;s Office</address>
+<address>Office of the Governor</address>
+<address>P.O. Box 94095</address>
+<city>Baton Rouge</city>
+<state>LA</state>
+<postal>70804</postal>
+<country>USA</country>
+</cntaddr>
+<cntvoice>(225) 219-5800</cntvoice>
+<cntfax>(225) 219-5802</cntfax>
+<cntemail>dgisclair@losco.state.la.us</cntemail>
+<hours>0800-1700 CST</hours>
+</cntinfo>
+</distrib>
+<resdesc>Parishes_LDOTD_2007</resdesc>
+<distliab>
+The data herein, including but not limited to geographic data, tabular data, analytical data, electronic data structures or files, are provided &quot;as is&quot; without warranty of any kind, either expressed or implied, or statutory, including, but not limited to, the implied warranties or merchantability and fitness for a particular purpose. The entire risk as to the quality and performance of the data is assumed by the user. No guarantee of accuracy is granted, nor is any responsibility for reliance thereon assumed. In no event shall the Louisiana Oil Spill Coordinator&apos;s Office (LOSCO) be liable for direct, indirect, incidental, consequential or special damages of any kind, including, but not limited to, loss of anticipated profits or benefits arising out of use of or reliance on the data. The LOSCO does not accept liability for any damages or misrepresentation caused by inaccuracies in the data or as a result of changes to the data caused by system transfers or other transformations or conversions, nor is there responsibility assumed to maintain the data in any manner or form.
+These data have been developed from the best available sources. Although efforts have been made to ensure that the data are accurate and reliable, errors and variable conditions originating from physical sources used to develop the data may be reflected in the data supplied. Users must be aware of these conditions and bear responsibility for the appropriate use of the information with respect to possible errors, scale, resolution, rectification, positional accuracy, development methodology, time period, environmental and climatic conditions and other circumstances specific to these data. The user is responsible for understanding the accuracy limitations of the data provided herein. The burden for determining fitness for use lies entirely with the user. The user should refer to the accompanying metadata notes for a description of the data and data development procedures.
+
+Although these data have been processed successfully on computers at the LOSCO, no guarantee, expressed or implied, is made by LOSCO regarding the use of these data on any other system, nor does the act of distribution constitute or imply any such warranty. Distribution of these data is intended for information purposes and should not be considered authoritative for navigational, engineering, legal and other site-specific uses.
+</distliab>
+<stdorder>
+<digform>
+<digtinfo>
+<formname>ARCGeo, shapefile, HTML</formname>
+<formvern>9.2</formvern>
+<formspec>ESRI Geodatabase and shapefile, HTML</formspec>
+<formcont>Geometry, attributes, and metadata</formcont>
+<filedec>no compression applied</filedec>
+<transize>2.303</transize>
+</digtinfo>
+<digtopt>
+<offoptn>
+<offmedia>DVD-ROM</offmedia>
+</offoptn>
+</digtopt>
+</digform>
+<ordering>To obtain more information about ordering this data on DVD-ROM, please visit http://lagic.lsu.edu/loscoweb/ for more information.</ordering>
+</stdorder>
+</distinfo>
+<metainfo>
+<metd>20070821</metd>
+<metc>
+<cntinfo>
+<cntorgp>
+<cntorg>Louisiana Department of Transportation and Development</cntorg>
+<cntper>Darryl W. Mack</cntper>
+</cntorgp>
+<cntpos>Information Technology Geographic Project Supervisor</cntpos>
+<cntaddr>
+<addrtype>REQUIRED: The mailing and/or physical address for the organization or individual.</addrtype>
+<city>REQUIRED: The city of the address.</city>
+<state>REQUIRED: The state or province of the address.</state>
+<postal>REQUIRED: The ZIP or other postal code of the address.</postal>
+</cntaddr>
+<cntvoice>225-379-1283</cntvoice>
+<cntfax>225-379-1807</cntfax>
+<cntemail>darrylmack@dotd.louisiana.gov</cntemail>
+</cntinfo>
+</metc>
+<metstdn>FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+<metstdv>FGDC-STD-001-1998</metstdv>
+<mettc>local time</mettc>
+<metextns>
+<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+<metprof>ESRI Metadata Profile</metprof>
+</metextns>
+<metextns>
+<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+<metprof>ESRI Metadata Profile</metprof>
+</metextns>
+<metextns>
+<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+<metprof>ESRI Metadata Profile</metprof>
+</metextns>
+<metextns>
+<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+<metprof>ESRI Metadata Profile</metprof>
+</metextns>
+</metainfo>
+</metadata>

@@ -29,6 +29,7 @@ def get_2000_data(feature):
         result = census_table.find_one(geo_id2=geoid, product='decennial-2000-bg')
 
         if result:
+            print 'found %s' % geoid
             return {
                 'white': int(result['vd05']),
                 'black': int(result['vd06']),
