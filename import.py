@@ -143,7 +143,28 @@ def import_2010_population_estimates():
 
             table.upsert(data, ['year', 'county'])
 
+def fix_2000_geoids():
+    block_group_table = db['block_groups_2000']
+    for row in block_group_table.all():
+        geoid_root = '{0}{1}{2}'.format(row['state'], row['county'], row['tract'])
+
+        zero_pad = 12 - len(geoid_root)
+        if zero_pad == 1:
+            geoid = '{0}{1}'.format(geoid_root, row['blkgroup'])
+        if zero_pad == 2:
+            geoid = '{0}{1:02d}'.format(geoid_root, int(row['blkgroup']))
+        if zero_pad == 3:
+            geoid = '{0}{1:03d}'.format(geoid_root, int(row['blkgroup']))
+
+        block_group_table.update({
+            'ogc_fid': row['ogc_fid'],
+            'geoid2': geoid,
+        }, ['ogc_fid'])
+
+
 if __name__ == '__main__':
+    fix_2000_geoids()
+
     import_2000_population_estimates()
     import_2010_population_estimates()
 
