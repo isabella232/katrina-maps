@@ -5,9 +5,11 @@ import os
 
 from englewood import DotDensityPlotter
 from functools import partial
-from summarize import METRO_FIPS
+#from summarize import METRO_FIPS
 
-DOT_DIVISOR = 5
+METRO_FIPS = ['071']
+
+DOT_DIVISOR = 1
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
 db = dataset.connect(POSTGRES_URL)
@@ -33,8 +35,8 @@ def make_2000_dots():
         'PG:dbname=nola_demographics host=localhost',
         'block_groups_2000',
         'ESRI Shapefile',
-        'output/dots-2000',
-        'dots-2000',
+        'output/dots-2000-lower-9th',
+        'dots-2000-lower-9th',
         get_2000_data,
         DOT_DIVISOR
     ]
@@ -59,8 +61,8 @@ def make_2010_dots():
         'PG:dbname=nola_demographics host=localhost',
         'block_groups_2010',
         'ESRI Shapefile',
-        'output/dots-2010',
-        'dots-2010',
+        'output/dots-2010-lower-9th',
+        'dots-2010-lower-9th',
         get_2010_data,
         DOT_DIVISOR
     ]
@@ -69,5 +71,5 @@ def make_2010_dots():
 
 
 if __name__ == '__main__':
-    #make_2000_dots()
+    make_2000_dots()
     make_2010_dots()

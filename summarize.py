@@ -22,6 +22,27 @@ METRO_FIPS = [
     '089',
     '095',
 ]
+LOWER_NINTH_BLOCKGROUPS = [
+    '1500000US220710007011',
+    '1500000US220710007012',
+    '1500000US220710007013',
+    '1500000US220710007014',
+    '1500000US220710009011',
+    '1500000US220710009012',
+    '1500000US220710009013',
+    '1500000US220710009014',
+    '1500000US220710009021',
+    '1500000US220710009022',
+    '1500000US220710009023',
+    '1500000US220710009024',
+    '1500000US220710009031',
+    '1500000US220710009032',
+    '1500000US220710009033',
+    '1500000US220710009034',
+    '1500000US220710009041',
+    '1500000US220710009042',
+]
+
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
 db = dataset.connect(POSTGRES_URL)
@@ -141,7 +162,40 @@ def summarize_population_estimates():
         """.format(county))
         dataset.freeze(result, format='csv', filename=filename)
 
+def summarize_lower_ninth():
+    blockgroup_list = ["'{0}'".format(geoid) for geoid in LOWER_NINTH_BLOCKGROUPS]
+    blockgroups = ','.join(blockgroup_list)
 
+    pop2000 = list(db.query("""
+        select
+            sum(c.vd01::integer) as total,
+            sum(c.vd03::integer) as white,
+            sum(c.vd04::integer) as black,
+            sum(c.vd06::integer) as asian,
+            sum(c.vd10::integer) as hispanic
+        from census_data c
+        where
+            c.product='decennial-2000-bg' and
+            c.geo_id in ({0})
+    """.format(blockgroups)))[0]
+
+    pop2010 = list(db.query("""
+        select
+            sum(c.d001::integer) as total,
+            sum(c.d003::integer) as white,
+            sum(c.d004::integer) as black,
+            sum(c.d006::integer) as asian,
+            sum(c.d010::integer) as hispanic
+        from census_data c
+        where
+            c.product='decennial-2010-bg' and
+            c.geo_id in ({0})
+    """.format(blockgroups)))[0]
+
+    pop2000['year'] = 2000
+    pop2010['year'] = 2010
+    data = [pop2000, pop2010]
+    dataset.freeze(data, format='csv', filename='data/lower-ninth.csv')
 
 if __name__ == '__main__':
     try:
@@ -149,15 +203,9 @@ if __name__ == '__main__':
     except OSError:
         pass
 
-    #print 'summarizing decennial 2000'
-    #summarize_2000()
-
-    #print 'summarizing decennial 2010'
-    #summarize_2010()
+    print 'summarize lower 9th'
+    summarize_lower_ninth()
 
     print 'summarize_population_estimates'
     summarize_population_estimates()
 
-    #for year in range(2009, 2014):
-        #print 'summarizing acs {0}'.format(year)
-        #summarize_acs(year)
