@@ -16,6 +16,9 @@ psql nola_demographics -c "SELECT postgis_full_version()"
 # mkdir data/cb_2013_22_bg_500k-clean/
 # mapshaper data/cb_2013_22_bg_500k/cb_2013_22_bg_500k.shp -clip bbox=-90.71961042991820534,28.83132805149813294,-86.59184855829140304,30.7471360415180115 -erase data/lousiana-water/tiger_la_water_CENSUS_2006.shp -simplify 30% -o data/cb_2013_22_bg_500k-clean/cb_2013_22_bg_500k-clean.shp
 
+#
+# mapshaper data/gz_2010_22_150_00_500k/gz_2010_22_150_00_500k.shp -clip bbox=-90.71961042991820534,28.83132805149813294,-86.59184855829140304,30.7471360415180115 -erase data/lousiana-water/tiger_la_water_CENSUS_2006.shp -simplify 30% -o data/gz_2010_22_150_00_500k-clean/gz_2010_22_150_00_500k-clean.shp
+
 # mkdir Parishes_LDOTD_2007-clean
 # mapshaper data/Parishes_LDOTD_2007/Parishes_LDOTD_2007.shp -clip bbox=-90.71961042991820534,28.83132805149813294,-86.59184855829140304,30.7471360415180115 -erase data/lousiana-water/tiger_la_water_CENSUS_2006.shp -simplify 30% -o data/Parishes_LDOTD_2007-clean/Parishes_LDOTD_2007-clean.shp
 # mapshaper data/Parishes_LDOTD_2007/Parishes_LDOTD_2007.shp -erase data/lousiana-water/tiger_la_water_CENSUS_2006.shp -simplify 30% -o data/Parishes_LDOTD_2007-clean/Parishes_LDOTD_2007-clean.shp
@@ -27,7 +30,7 @@ echo "Import 2000 census block groups"
 PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/bg22_d00_shp-clean/bg22_d00_shp-clean.shp -s_srs EPSG:4269  -t_srs EPSG:4269 -nlt multipolygon -nln block_groups_2000
 
 echo "Import 2013 census block groups"
-PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/cb_2013_22_bg_500k-clean/cb_2013_22_bg_500k-clean.shp  -t_srs EPSG:4269 -nlt multipolygon -nln block_groups_2013
+PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/gz_2010_22_150_00_500k-clean/gz_2010_22_150_00_500k-clean.shp  -t_srs EPSG:4269 -nlt multipolygon -nln block_groups_2010
 
 echo "Import census data"
 ./import.py

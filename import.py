@@ -8,7 +8,7 @@ from summarize import METRO_PARISHES, METRO_FIPS
 
 INPUT_FILES = (
     ('decennial-2000-bg', 'data/decennial-2000-bg/DEC_00_SF1_P004_with_ann.csv'),
-    ('acs-2013-bg', 'data/acs-2013-bg/ACS_13_5YR_B03002_with_ann.csv'),
+    ('decennial-2010-bg', 'data/decennial-2010-bg/DEC_10_SF1_P5_with_ann.csv'),
 )
 FIPS_CROSSWALK_FILE = 'data/fips-crosswalk/st22_la_cou.txt'
 ESTIMATES_2000_FILE = 'data/populations-estimates/2000-2010/CO-EST00INT-SEXRACEHISP.csv.txt'
