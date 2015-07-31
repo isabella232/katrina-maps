@@ -32,11 +32,11 @@ PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/c
 echo "Import census data"
 ./import.py
 
-psql nola_demographics -c "create or replace view census_2000_race as 
-select bg.wkb_geometry, bg.geoid2, d.vd05 as white, d.vd06 as black, d.vd08 as asian, d.vd02 as hispanic
-from block_groups_2000 bg
-join census_data d on bg.geoid2 = d.geo_id2
-where d.product='decennial-2000-bg';"
+#psql nola_demographics -c "create or replace view census_2000_race as 
+#select bg.wkb_geometry, bg.geoid2, d.vd05 as white, d.vd06 as black, d.vd08 as asian, d.vd02 as hispanic
+#from block_groups_2000 bg
+#join census_data d on bg.geoid2 = d.geo_id2
+#where d.product='decennial-2000-bg';"
 
 echo "Generate summary files"
 ./summarize.py
