@@ -15,19 +15,19 @@ census_table = db['census_data']
 
 
 def get_2000_data(feature):
+    geoid_root = '{0}{1}{2}'.format(feature.state, feature.county, feature.tract)
+
+    zero_pad = 12 - len(geoid_root)
+    if zero_pad == 1:
+        geoid = '{0}{1}'.format(geoid_root, feature.blkgroup)
+    if zero_pad == 2:
+        geoid = '{0}{1:02d}'.format(geoid_root, int(feature.blkgroup))
+    if zero_pad == 3:
+        geoid = '{0}{1:03d}'.format(geoid_root, int(feature.blkgroup))
+
+
     if feature.county in METRO_FIPS:
-        geoid_root = '{0}{1}{2}'.format(feature.state, feature.county, feature.tract)
-
-        zero_pad = 12 - len(geoid_root)
-        if zero_pad == 1:
-            geoid = '{0}{1}'.format(geoid_root, feature.blkgroup)
-        if zero_pad == 2:
-            geoid = '{0}{1:02d}'.format(geoid_root, int(feature.blkgroup))
-        if zero_pad == 3:
-            geoid = '{0}{1:03d}'.format(geoid_root, int(feature.blkgroup))
-
         result = census_table.find_one(geo_id2=geoid, product='decennial-2000-bg')
-
         if result:
             print 'found %s' % geoid
             return {
@@ -38,6 +38,8 @@ def get_2000_data(feature):
             }
         else:
             print 'no result for %s' % geoid
+    else:
+        print 'feature not in data %s' % geoid
 
 
 def make_2000_dots():
@@ -56,8 +58,7 @@ def make_2000_dots():
 
 
 def get_2013_data(feature):
-    #if feature.countyfp in METRO_FIPS:
-    if True:
+    if feature.countyfp in METRO_FIPS:
         result = census_table.find_one(geo_id2=feature.geoid, product='acs-2013-bg')
         return {
             'white': int(result['hd01_vd03']),
