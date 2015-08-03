@@ -7,6 +7,9 @@ from englewood import DotDensityPlotter
 from functools import partial
 from summarize import METRO_FIPS
 
+import locale
+locale.setlocale(locale.LC_ALL, 'en_US')
+
 DOT_DIVISOR = 5
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
@@ -68,6 +71,38 @@ def make_2010_dots():
     dots.plot()
 
 
+def get_household_dot_data(year, feature):
+    table = db['household_mail']
+    result = table.find_one(neighborhood=feature.lup_lab, year=str(year))
+    if result:
+        return {
+            'total': locale.atoi(result['households']),
+        }
+    else:
+        print 'no result for %s' % feature.lup_lab
+
+def make_household_dots(year):
+    try:
+        os.makedirs('output/household-dots-%s' % year)
+    except OSError:
+        pass
+
+    get_data = partial(get_household_dot_data, year)
+    args = [
+        'PG:dbname=nola_demographics host=localhost',
+        'nola_neighborhoods',
+        'ESRI Shapefile',
+        'output/household-dots-%s' % year,
+        'household-dots-%s' % year,
+        get_data,
+        1
+    ]
+    dots = DotDensityPlotter(*args)
+    dots.plot()
+
+
 if __name__ == '__main__':
     #make_2000_dots()
-    make_2010_dots()
+    #make_2010_dots()
+    for year in range(2005, 2015, 3):
+        make_household_dots(year)

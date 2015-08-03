@@ -29,17 +29,14 @@ psql nola_demographics -c "SELECT postgis_full_version()"
 echo "Import 2000 census block groups"
 PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/bg22_d00_shp-clean/bg22_d00_shp-clean.shp -s_srs EPSG:4269  -t_srs EPSG:4269 -nlt multipolygon -nln block_groups_2000
 
-echo "Import 2013 census block groups"
+echo "Import 2010 census block groups"
 PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/gz_2010_22_150_00_500k-clean/gz_2010_22_150_00_500k-clean.shp  -t_srs EPSG:4269 -nlt multipolygon -nln block_groups_2010
+
+echo "Import neighborhoods"
+PGCLIENTENCODING=LATIN1 ogr2ogr -skipfailures -f PostgreSQL PG:dbname=nola_demographics data/NOLA_Neighborhood_Statistical_Areas-clean/Neighborhood_Statistical_Areas-clean.shp  -t_srs EPSG:4269 -nlt multipolygon -nln nola_neighborhoods
 
 echo "Import census data"
 ./import.py
-
-#psql nola_demographics -c "create or replace view census_2000_race as 
-#select bg.wkb_geometry, bg.geoid2, d.vd05 as white, d.vd06 as black, d.vd08 as asian, d.vd02 as hispanic
-#from block_groups_2000 bg
-#join census_data d on bg.geoid2 = d.geo_id2
-#where d.product='decennial-2000-bg';"
 
 echo "Generate summary files"
 ./summarize.py

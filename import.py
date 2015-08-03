@@ -13,6 +13,7 @@ INPUT_FILES = (
 FIPS_CROSSWALK_FILE = 'data/fips-crosswalk/st22_la_cou.txt'
 ESTIMATES_2000_FILE = 'data/populations-estimates/2000-2010/CO-EST00INT-SEXRACEHISP.csv.txt'
 ESTIMATES_2010_FILE = 'data/populations-estimates/PEP_2014_PEPSR6H/PEP_2014_PEPSR6H_with_ann.csv'
+HOUSEHOLD_MAIL_FILE = 'data/household-mail/household-mail-by-neighborhood.csv'
 
 
 POSTGRES_URL = 'postgresql:///nola_demographics'
@@ -162,11 +163,49 @@ def fix_2000_geoids():
         }, ['ogc_fid'])
 
 
+def import_households_by_mail():
+    table = db['household_mail']
+
+    with open(HOUSEHOLD_MAIL_FILE) as f:
+        rows = list(csv.DictReader(f))
+
+    for row in rows:
+        for k, v in row.items():
+            if k != 'Neighborhood':
+                year = k[-4:]
+                neighborhood = row['Neighborhood'].upper()
+                data = {
+                    'neighborhood': neighborhood,
+                    'year': year,
+                    'households': v
+                }
+                table.insert(data)
+
+
+def fix_neighborhood_names():
+    table = db['nola_neighborhoods']
+    for row in table.all():
+        neighborhood_parts = row['lup_lab'].split(' - ')
+        neighborhood = neighborhood_parts[0].upper()
+        neighborhood = neighborhood.replace('HOUSING DEV', 'DEVELOPMENT')
+        if neighborhood == 'FILLMORE':
+            neighborhood = 'FILMORE'
+
+        print neighborhood
+        table.update({
+            'lup_lab': neighborhood,
+            'ogc_fid': row['ogc_fid'],
+        }, ['ogc_fid'])
+
+
 if __name__ == '__main__':
     fix_2000_geoids()
+    fix_neighborhood_names()
 
     import_2000_population_estimates()
     import_2010_population_estimates()
+
+    import_households_by_mail()
 
     print 'import fips crosswalk'
     import_fips()
