@@ -69,5 +69,5 @@ def make_2010_dots():
 
 
 if __name__ == '__main__':
-    #make_2000_dots()
+    make_2000_dots()
     make_2010_dots()
