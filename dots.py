@@ -73,10 +73,10 @@ def make_2010_dots():
 
 def get_household_dot_data(year, feature):
     table = db['household_mail']
-    result = table.find_one(neighborhood=feature.lup_lab, year=str(year))
+    result = table.find_one(neighborhood=feature.gnocdc_lab, year=str(year))
     if result:
         return {
-            'total': locale.atoi(result['households']),
+            'total': result['households_change'],
         }
     else:
         print 'no result for %s' % feature.lup_lab
@@ -102,7 +102,7 @@ def make_household_dots(year):
 
 
 if __name__ == '__main__':
-    #make_2000_dots()
-    #make_2010_dots()
-    for year in range(2005, 2015, 3):
-        make_household_dots(year)
+    make_2000_dots()
+    make_2010_dots()
+    #for year in range(2005, 2015, 3):
+        #make_household_dots(year)

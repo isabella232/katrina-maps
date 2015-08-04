@@ -33,13 +33,13 @@ echo "Import 2010 census block groups"
 PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/gz_2010_22_150_00_500k-clean/gz_2010_22_150_00_500k-clean.shp  -t_srs EPSG:4269 -nlt multipolygon -nln block_groups_2010
 
 echo "Import neighborhoods"
-PGCLIENTENCODING=LATIN1 ogr2ogr -skipfailures -f PostgreSQL PG:dbname=nola_demographics data/NOLA_Neighborhood_Statistical_Areas-clean/Neighborhood_Statistical_Areas-clean.shp  -t_srs EPSG:4269 -nlt multipolygon -nln nola_neighborhoods
+PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:dbname=nola_demographics data/NOLA_Neighborhood_Statistical_Areas/Neighborhood_Statistical_Areas.shp -sql "select gnocdc_lab from Neighborhood_Statistical_Areas"  -t_srs EPSG:4269 -nlt multipolygon -nln nola_neighborhoods
 
 echo "Import census data"
 ./import.py
 
 echo "Generate summary files"
-./summarize.py
+#./summarize.py
 
 echo "Make some dots"
-./dots.py
+#./dots.py

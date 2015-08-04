@@ -6,6 +6,9 @@ from slugify import slugify
 from collections import OrderedDict
 from summarize import METRO_PARISHES, METRO_FIPS
 
+import locale
+locale.setlocale(locale.LC_ALL, 'en_US')
+
 INPUT_FILES = (
     ('decennial-2000-bg', 'data/decennial-2000-bg/DEC_00_SF1_P004_with_ann.csv'),
     ('decennial-2010-bg', 'data/decennial-2010-bg/DEC_10_SF1_P5_with_ann.csv'),
@@ -167,49 +170,72 @@ def import_households_by_mail():
     table = db['household_mail']
 
     with open(HOUSEHOLD_MAIL_FILE) as f:
-        rows = list(csv.DictReader(f))
+        rows = list(csv.reader(f))
 
-    for row in rows:
-        for k, v in row.items():
-            if k != 'Neighborhood':
-                year = k[-4:]
-                neighborhood = row['Neighborhood'].upper()
-                data = {
-                    'neighborhood': neighborhood,
-                    'year': year,
-                    'households': v
-                }
-                table.insert(data)
+    for row in rows[1:]:
+        neighborhood = row[0].upper()
+        print neighborhood
+        data = {
+            'neighborhood': neighborhood,
+            'year': 2005,
+            'households': locale.atoi(row[2]),
+            'households_change': _indexed_change(row[2], row[2]),
+        }
+        table.insert(data)
+
+        data = {
+            'neighborhood': neighborhood,
+            'year': 2008,
+            'households': locale.atoi(row[3]),
+            'households_change': _indexed_change(row[3], row[2]),
+        }
+        table.insert(data)
+
+        data = {
+            'neighborhood': neighborhood,
+            'year': 2011,
+            'households': locale.atoi(row[6]),
+            'households_change': _indexed_change(row[6], row[2]),
+        }
+        table.insert(data)
+
+        data = {
+            'neighborhood': neighborhood,
+            'year': 2014,
+            'households': locale.atoi(row[9]),
+            'households_change': _indexed_change(row[9], row[2]),
+        }
+        table.insert(data)
+
+
+def _indexed_change(new, old):
+    new = locale.atof(new)
+    old = locale.atof(old)
+    return (new - old) / old
 
 
 def fix_neighborhood_names():
     table = db['nola_neighborhoods']
     for row in table.all():
-        neighborhood_parts = row['lup_lab'].split(' - ')
-        neighborhood = neighborhood_parts[0].upper()
-        neighborhood = neighborhood.replace('HOUSING DEV', 'DEVELOPMENT')
-        if neighborhood == 'FILLMORE':
-            neighborhood = 'FILMORE'
-
-        print neighborhood
+        print row['gnocdc_lab'].upper().replace('  ', ' ')
         table.update({
-            'lup_lab': neighborhood,
+            'gnocdc_lab': row['gnocdc_lab'].upper().replace('  ', ' '),
             'ogc_fid': row['ogc_fid'],
         }, ['ogc_fid'])
 
 
 if __name__ == '__main__':
-    fix_2000_geoids()
+    #fix_2000_geoids()
     fix_neighborhood_names()
 
-    import_2000_population_estimates()
-    import_2010_population_estimates()
+    #import_2000_population_estimates()
+    #import_2010_population_estimates()
 
     import_households_by_mail()
 
-    print 'import fips crosswalk'
-    import_fips()
+    #print 'import fips crosswalk'
+    #import_fips()
 
-    for product, filename in INPUT_FILES:
-        print 'processing %s' % product
-        import_data(db, product, filename)
+    #for product, filename in INPUT_FILES:
+        #print 'processing %s' % product
+        #import_data(db, product, filename)
